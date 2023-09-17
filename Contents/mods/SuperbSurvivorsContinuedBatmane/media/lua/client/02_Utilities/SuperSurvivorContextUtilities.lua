@@ -316,7 +316,7 @@ local function getSquaresWindow(cs)
 	end
 
 	local objs = cs:getObjects()
-	for i = 1, objs:size() do
+	for i = 0, objs:size() - 1 do
 		local obj = objs:get(i)
 		if (instanceof(obj, "IsoWindow")) then
 			return obj
