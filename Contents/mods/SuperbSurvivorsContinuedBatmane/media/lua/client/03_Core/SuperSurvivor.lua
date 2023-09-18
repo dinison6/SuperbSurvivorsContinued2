@@ -20,7 +20,7 @@ function SuperSurvivor:CreateBaseSurvivorObject()
 	survivorObject.SwipeStateTicks = 0 -- used to check if survivor stuck in the same animation frame
 	survivorObject.AttackRange = 0.5;
 	survivorObject.UsingFullAuto = false;
-	survivorObject.UpdateDelayTicks = 20;     -- Cows: I can't find any references using UpdateDelayTicks...
+	survivorObject.UpdateDelayTicks = 60;     -- Cows: I can't find any references using UpdateDelayTicks...
 	survivorObject.NumberOfBuildingsLooted = 0;
 	survivorObject.GroupBraveryBonus = 0;     -- Cows: I can't find any references using GroupBraveryBonus...
 	survivorObject.GroupBraveryUpdatedTicks = 0; -- Cows: I can't find any references using GroupBraveryUpdatedTicks...
@@ -1514,9 +1514,9 @@ function SuperSurvivor:DoVision()
 	-- if enemies are near, increase the player update function refresh time for better fighting.
 	if (self.dangerSeenCount > 0) and (self:getCurrentTask() == "Attack") then
 		-- Cows: Maybe this is why NPCs absolutely destroys the player in melee?
-		self.UpdateDelayTicks = 10; -- only do it when fighting so they dont follow or flee slowly when not fighting
+		self.UpdateDelayTicks = 20; -- only do it when fighting so they dont follow or flee slowly when not fighting
 	else
-		self.UpdateDelayTicks = 20;
+		self.UpdateDelayTicks = 60;
 	end
 
 	CreateLogLine("SuperSurvivor", isLocalLoggingEnabled, "--- SuperSurvivor:DoVision() END ---");
@@ -2479,7 +2479,7 @@ function SuperSurvivor:updateSurvivorStatus()
 		self.player:getModData().hitByCharacter = false
 		self.player:getModData().semiHostile = false
 		self.player:getModData().felldown = nil
-		self.UpdateDelayTicks = 20;
+		self.UpdateDelayTicks = 60;
 	end
 
 	if (self.GoFindThisCounter > 0) then self.GoFindThisCounter = self.GoFindThisCounter - 1 end
